@@ -17,4 +17,4 @@ Node.js app that checks for the existence of faces in Twitter user's profiles
     
 3) Start the server
 
-    node server.js
+    node index.js
