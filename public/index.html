@@ -1,0 +1,40 @@
+<html>
+
+<head>
+    <title>Twitter Checker</title>
+</head>
+
+<body>
+    <form>
+        <div id="status"></div>
+        <label for="">Screen Name</label>
+        <input id="screen_name" type="text" name="screen_name">
+        <input type="submit">
+    </form>
+</body>
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script>
+$('form').submit(function(e) {
+    e.preventDefault();
+    $('#status').html('');
+    $('input').attr('disabled', true);
+
+    $.getJSON('/check', {
+        screen_name: $('#screen_name').val()
+    }, function(res) {
+        if (res.success) {
+            msg = '<img src="' + res.profile_img + '">';
+            msg += (res.is_person ? '<strong>Yes</strong>, ' + res.screen_name + ' is a person.' : '<strong>No</strong>, ' + res.screen_name + ' is not a person.');
+            $('<div/>').html(msg).appendTo('body');
+        } else {
+            $('#status').html('Could not find that user.');
+        }
+        $('input').removeAttr('disabled');
+    })
+    
+    return false;
+})
+</script>
+
+</html>
