@@ -3,6 +3,8 @@ twitter-facial-recognition
 
 Node.js app that checks for the existence of faces in Twitter user's profiles
 
+http://ksloan.net/facial-detection-in-twitter-profile-pictures/
+
 ## Installation
 1) Install dependencies
 
